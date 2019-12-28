@@ -39,11 +39,11 @@ namespace Publisher {
 		Event VideoEncoderEvent;
 
 	public:
-		void Encode(Video vid, EventArgs args)
+		void Encode(Object source, EventArgs args)
 		{
-			std::cout << "Encoding Video: " << vid.name << "\n";
+			std::cout << "Encoding Video: " << source.name << "\n";
 			system("timeout 3");
-			VideoEncoderEvent.Invoke(vid, args);
+			VideoEncoderEvent.Invoke(*this, args);
 		}
 	};
 }

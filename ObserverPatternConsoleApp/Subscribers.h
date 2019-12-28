@@ -12,7 +12,7 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " + args.message.GetMessage() + " through Email.\n";
+			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Email.\n";
 			system("timeout 3");
 		}
 	};
@@ -24,7 +24,7 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " + args.message.GetMessage() + " through Text Message.\n";
+			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Text Message.\n";
 			system("timeout 3");
 		}
 	};
@@ -36,7 +36,7 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " + args.message.GetMessage() + " through Voice Message.\n";
+			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Voice Message.\n";
 			system("timeout 3");
 		}
 	};
