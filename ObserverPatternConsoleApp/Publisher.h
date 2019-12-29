@@ -7,6 +7,8 @@
 
 namespace Publisher {
 
+	const char * wait_three = "timeout /t 3 >nul";
+
 	class Video : public Object::Object
 	{
 	public:
@@ -15,8 +17,8 @@ namespace Publisher {
 
 	class EventArgs {
 	public:
-		Object::Message message;
-		EventArgs(std::string msg) { message.name = msg; }
+		std::vector<Object::Message> message;
+		EventArgs(std::vector<std::string> msg) { for (auto i = msg.cbegin(); i != msg.cend(); i++) { message.push_back(*i); } }
 	};
 
 	class EventHandler {
@@ -35,15 +37,15 @@ namespace Publisher {
 	}; 
 
 	class VideoEncoder : private Object::Object {
-	private:
-		Event VideoEncoderEvent;
-
 	public:
-		void Encode(Object source, EventArgs args)
+		Event VideoEncoded;
+
+		void Encode(Object source)
 		{
 			std::cout << "Encoding Video: " << source.name << "\n";
-			system("timeout 3");
-			VideoEncoderEvent.Invoke(*this, args);
+			EventArgs args({ source.name, "Video Encoded" });
+			system(wait_three);
+			VideoEncoded.Invoke(*this, args);
 		}
 	};
 }

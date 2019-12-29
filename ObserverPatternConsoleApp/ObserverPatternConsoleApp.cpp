@@ -9,5 +9,12 @@ int main()
 {
 	Publisher::Video video_001("Intro.mp4");
 	Publisher::VideoEncoder videoEncoder;
-	videoEncoder.Encode(video_001, Publisher::EventArgs("Video Encoded"));
+
+	Subscribers::MailService mailService;
+	Subscribers::VoiceMessageService voiceMessageService;
+	
+	videoEncoder.VideoEncoded += &voiceMessageService.voiceMessageServiceEventHandler;
+	videoEncoder.VideoEncoded += &mailService.mailServiceEventHandler;
+
+	videoEncoder.Encode(video_001);
 }

@@ -12,8 +12,8 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Email.\n";
-			system("timeout 3");
+			std::cout << "Sending Message: \"" << args.message[1].GetMessage() << ": " << args.message[0].GetMessage() << "\" through Email.\n";
+			system(Publisher::wait_three);
 		}
 	};
 
@@ -24,8 +24,8 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Text Message.\n";
-			system("timeout 3");
+			std::cout << "Sending Message: \"" << args.message[1].GetMessage() << ": " << args.message[0].GetMessage() << "\" through Text Message.\n";
+			system(Publisher::wait_three);
 		}
 	};
 
@@ -36,8 +36,8 @@ namespace Subscribers {
 
 		virtual void operator()(Object::Object obj, Publisher::EventArgs args)
 		{
-			std::cout << "Sending Message: " << obj.name << " " << args.message.GetMessage() << " through Voice Message.\n";
-			system("timeout 3");
+			std::cout << "Sending Message: \"" << args.message[1].GetMessage() << ": " << args.message[0].GetMessage() << "\" through Voice Message.\n";
+			system(Publisher::wait_three);
 		}
 	};
 
