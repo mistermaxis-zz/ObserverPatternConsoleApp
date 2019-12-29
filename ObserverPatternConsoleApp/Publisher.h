@@ -48,7 +48,7 @@ namespace Publisher {
 
 		void Encode(Video source)
 		{
-			std::cout << "\nEncoding Video: " << source.name << "\n";
+			std::cout << "\nEncoding Video: \"" << source.name << "\"\n";
 			EventArgs args({ source.name, "Video Encoded" });
 			system(wait_three);
 			VideoEncoded.Invoke(*this, args);
@@ -61,7 +61,7 @@ namespace Publisher {
 
 		void Search(Search source)
 		{
-			std::cout << "\nSearching for text: " << source.name << "\n";
+			std::cout << "\nSearching for text: \"" << source.name << "\"\n";
 			EventArgs args({ source.name, "Search Completed" });
 			system(wait_three);
 			SearchCompleted.Invoke(*this, args);
