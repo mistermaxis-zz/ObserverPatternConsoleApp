@@ -15,6 +15,12 @@ namespace Publisher {
 		Video(std::string n) { name = n; }
 	};
 
+	class Search : public Object::Object
+	{
+	public:
+		Search(std::string n) { name = n; }
+	};
+
 	class EventArgs {
 	public:
 		std::vector<Object::Message> message;
@@ -40,12 +46,25 @@ namespace Publisher {
 	public:
 		Event VideoEncoded;
 
-		void Encode(Object source)
+		void Encode(Video source)
 		{
 			std::cout << "\nEncoding Video: " << source.name << "\n";
 			EventArgs args({ source.name, "Video Encoded" });
 			system(wait_three);
 			VideoEncoded.Invoke(*this, args);
+		}
+	};
+
+	class SearchManager : private Object::Object {
+	public:
+		Event SearchCompleted;
+
+		void Search(Search source)
+		{
+			std::cout << "\nSearching for text: " << source.name << "\n";
+			EventArgs args({ source.name, "Search Completed" });
+			system(wait_three);
+			SearchCompleted.Invoke(*this, args);
 		}
 	};
 }
