@@ -42,7 +42,7 @@ namespace Publisher {
 
 		void Encode(Object source)
 		{
-			std::cout << "Encoding Video: " << source.name << "\n";
+			std::cout << "\nEncoding Video: " << source.name << "\n";
 			EventArgs args({ source.name, "Video Encoded" });
 			system(wait_three);
 			VideoEncoded.Invoke(*this, args);
